@@ -1,0 +1,135 @@
+                      "Practica 1";
+
+  "Ej 1:";
+
+1+2*3;
+
+15.0-4.2/1.4;
+
+11 div 2 mod 3;
+
+"foo"^"bar"^"";
+
+3>4 orelse 5<6 andalso not(7<>8);
+
+if 6<10 then 6.0 else 10.0;
+
+   "Ej 2:";
+
+8 div 4;
+
+if 2<3 then 4 else 3;
+
+1<2 andalso 5>3;
+
+6+7 div 2;
+
+4.0+3.5;
+
+1.0<2.0 orelse 3>4;
+
+"a"^"b";  implode([#"a",#"b"]);
+  
+    "Ej 3:";
+
+val F = false;
+val T = true;
+
+T orelse F;
+
+if T 
+then true 
+else F;
+
+T andalso F;
+
+if T then 
+if F 
+     then true
+     else false
+else false;
+
+    "Ej 4:";
+
+floor(123.45);    floor(~123.45);
+
+ceil(123.45);     ceil(~123.45);
+
+ord(#"Y");
+
+chr(120);
+
+real(ord(#"N"));
+
+chr(floor(97.0)); "deberia ir trunc(97.0)";
+
+str(#"Z");
+
+    "Ej 5:";
+
+ceil(4.0);
+if true then 5+6 else 7;
+chr(255);
+chr(0);
+ord(#"c");
+chr(97);
+if false then 1 else 2;
+ord(#"a");
+
+    "Ej 6:";
+
+"¿Cuales son los valores de las siguientes expresiones?";
+
+#2(3,4,5);
+hd([3, 4, 5]);
+tl([3,4,5]);
+explode("foo");
+implode([#"f", #"o", #"o"]);
+"c"::["a","t"];
+["c", "o"]@["b", "o", "l"];
+concat(["c","a","t"]);
+
+    "Ej 7:";
+
+#4(3,4,5,6);
+hd([0]);
+1;
+explode("bar");
+implode([#"a", #"b"]);
+"r"::["a", "t"]; ["r"]@["a", "t"];
+tl([0]);
+[1]@[2];
+concat(["a","b"]);
+
+    "Ej 8:";
+
+(1.5, ("3", [4,5]));
+
+[[1,2],nil, [3]];
+
+[(2,3.5), (4, 5.5), (6,7.5)];
+
+([#"a",#"b"], [nil, [1,2,3]]);
+
+    "Ej 9:";
+
+ "¿(1,2) y (1,2,3) tienen el mismo tipo? Si";
+ "¿[1,2] y [1,2,3] tienen el mismo tipo? No";
+
+    "Ej 10:";
+
+[[[0]]];
+
+[(7, #"c")];
+
+(["a"], (4, (4.7,"td")), 0);
+
+(((4,7),[false], 4.7),(4.7, "td"));
+
+((false,47),#"d");
+
+(4.7,[[[[47]]]]);
+
+    "Ej 11:";
+
+hd(explode("a"));
