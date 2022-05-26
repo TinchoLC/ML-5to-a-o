@@ -1,0 +1,33 @@
+                      "Practica 2";
+
+  "Ej 1:";
+
+fun CuboDeReal(x:real):real = x*x*x; CuboDeReal(3.0);
+
+fun MenorDe3co(x,y,z):int =
+if x < y andalso x < z 
+then x 
+else if y < z 
+     then y 
+     else z;       MenorDe3co(4,7,4774);
+
+fun TercerLista(x) = hd(tl(tl(x)));  TercerLista([2,3,4,5,6,7]);
+
+fun InversoTupla(x,y,z) = (z,y,x);  InversoTupla(23,4,7);
+
+fun TercerCaracter(x:string):char = TercerLista(explode(x)); TercerCaracter("conga");
+
+fun UltimoPrimero(x:'a list):'a list = tl(x)@[hd(x)]; UltimoPrimero([2,3,4]);
+fun UltimoPrimero2(cabeza::cola) = cola@[cabeza]
+  | UltimoPrimero2(nil) = nil; UltimoPrimero2([2,3,4]);
+
+  "Ej 2:";
+
+fun PeqGran("gro","se") = "ro"
+  | PeqGran(x,y) = "ra"; PeqGran("go","s");
+
+1. Dados tres enteros, devuelva un par ordenado con el valor m´as peque˜no y el valor m´as grande
+2. Dados tres enteros, devuelva una lista con los tres valores ordenados de menor a mayor
+3. Redondee un n´umero real al m´ultiplo de diez m´as cercano
+4. Dada una lista, devuelva la misma lista sin el 2do elemento. La funci´on no debe necesariamente comportarse
+correctamente si le pasamos una lista con menos de 2 elementos
