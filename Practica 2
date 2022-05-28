@@ -1,4 +1,4 @@
-                      "Practica 2";
+                         "Practica 2";
 
   "Ej 1:";
 
@@ -10,6 +10,13 @@ then x
 else if y < z 
      then y 
      else z;       MenorDe3co(4,7,4774);
+
+fun MayorDe3co(x,y,z):int =
+if x > y andalso x > z 
+then x 
+else if y > z 
+     then y 
+     else z;       MayorDe3co(4,7,4774);
 
 fun TercerLista(x) = hd(tl(tl(x)));  TercerLista([2,3,4,5,6,7]);
 
@@ -23,11 +30,73 @@ fun UltimoPrimero2(cabeza::cola) = cola@[cabeza]
 
   "Ej 2:";
 
-fun PeqGran("gro","se") = "ro"
-  | PeqGran(x,y) = "ra"; PeqGran("go","s");
+fun PequeyGrande3(x,y,z)=[MenorDe3co(x,y,z),MayorDe3co(x,y,z)];
+PequeyGrande3(50,3,1);
 
-1. Dados tres enteros, devuelva un par ordenado con el valor m´as peque˜no y el valor m´as grande
-2. Dados tres enteros, devuelva una lista con los tres valores ordenados de menor a mayor
-3. Redondee un n´umero real al m´ultiplo de diez m´as cercano
-4. Dada una lista, devuelva la misma lista sin el 2do elemento. La funci´on no debe necesariamente comportarse
-correctamente si le pasamos una lista con menos de 2 elementos
+fun tresordenados(x,y,z) =
+if x < y andalso x < z 
+then if y < z
+     then [x,y,z]
+     else [x,z,y]
+
+else if y < z andalso y < x
+     then if x < z
+          then [y,x,z]
+          else [y,z,x]
+
+     else if x < y
+          then [z,x,y]
+          else [z,y,x]; tresordenados(24,646,43);
+
+fun multidediezcercano(x:real):int = round(x/10.0)*10; multidediezcercano(505.1);
+
+fun sinsegundo(head::tail) = head::tl(tail)
+  | sinsegundo(nil) = nil; sinsegundo([30,20,35,44,77,47]);
+
+  "Ej 3:";
+"so easy";
+
+  "Ej 4:";
+
+fun factorial(1) = 1
+  | factorial(x)= x*factorial(x-1);  factorial(4);
+
+fun duplicadora(nil) = nil
+  | duplicadora(L) =  [hd(L),hd(L)]@duplicadora(tl(L)); duplicadora([3,4,5]);
+
+fun longitud(nil) = 0
+  | longitud(L) = 1 + longitud(tl(L)); longitud([5,2,3,4,1]);
+
+fun potencia(x,0) = 1.0
+  | potencia(x:real,i:int):real = x * potencia(x,i-1); potencia(2.0,4);
+
+fun mayorvalorlistareales([x]) = x
+  | mayorvalorlistareales(L) = 
+  if hd(L) > mayorvalorlistareales(tl(L))
+  then hd(L)
+  else mayorvalorlistareales(tl(L));      mayorvalorlistareales([2,8,5,1]);
+
+  "Ej 5:";
+"resuelto en discord!! (el = no anda entre reales)";
+
+  "Ej 6:";
+"hecho papu";
+
+  "Ej 7:";
+
+fun sumadetodos(nil) = 0
+  | sumadetodos([x]) = x
+  | sumadetodos(tincho::dari):int = tincho + sumadetodos(dari); sumadetodos([2,3,1]);
+
+fun productodetodos(nil) = 0
+  | productodetodos([x]) = x
+  | productodetodos(tincho::dari):int = tincho * productodetodos(dari); productodetodos([4,7,4]);
+
+fun sumadepares(nil) = nil
+  | sumadepares(tincho::dari) = hd(tincho)+hd(tl(tincho))::sumadepares(dari);
+sumadepares([[3,2],[535,23],[4,7]]);
+
+fun intercalarlista(nil) = nil
+  | intercalarlista([x]) = [x]
+  | intercalarlista(tincho::dari) = hd(dari)::tincho::intercalarlista(tl(dari));
+intercalarlista[3,5,7,1,4];
