@@ -1,0 +1,45 @@
+                      "Practica 3";
+datatype nats = 
+                 Zero 
+               | Succ of nats;
+  "Ej 1:";
+
+fun sumaNat(Zero,x) = x
+  | sumaNat(x,Zero) = x
+  | sumaNat(x:nats,Succ(y)):nats = sumaNat(Succ(x),y);
+sumaNat(Succ(Succ(Succ(Zero))),Succ(Zero));
+
+  "Ej 2:";
+fun duplicarNat(Zero) = Zero
+  | duplicarNat(Succ(x)) = Succ(Succ(duplicarNat(x)));
+duplicarNat(Succ(Succ(Succ(Zero))));
+
+  "Ej 3:";
+fun prodNat(Zero,x) = Zero
+  | prodNat(x,Zero) = Zero
+  | prodNat(x,Succ(y)) = sumaNat(x,prodNat(x,y));
+
+prodNat(Succ(Succ(Zero)),Succ(Succ(Zero)));
+
+  "Ej 4:";
+fun powerNat(Zero,x) = Zero
+  | powerNat(x,Zero) = Succ(Zero)
+  | powerNat(x,Succ(y)) = prodNat(x,powerNat(x,y));
+
+powerNat(Succ(Succ(Zero)),Succ(Succ(Succ(Zero))));
+
+  "Ej 7:";
+
+fun nats2int(Zero) = 0
+  | nats2int(Succ(x)) = 1 + nats2int(x);
+
+nats2int(Succ(Succ(Succ(Succ(Succ(Zero))))));
+
+fun int2nats(0) = Zero
+  | int2nats(x) = Succ(int2nats(x-1));
+
+int2nats(5);
+
+  "Ej 8 y 9:";
+
+ "bumbirunbimbunbim,";
