@@ -1,0 +1,6 @@
+                      "Practica 4";
+
+  "Ej 1:";
+
+fun listacubo(nil) = nil
+  | listacubo(x::y) = x*x*x::listacubo(y);
