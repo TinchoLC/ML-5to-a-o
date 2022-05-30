@@ -71,7 +71,7 @@ fun potencia(x,0) = 1.0
   | potencia(x:real,i:int):real = x * potencia(x,i-1); potencia(2.0,4);
 
 fun mayorvalorlistareales([x]) = x
-  | mayorvalorlistareales(L) = 
+  | mayorvalorlistareales(L:real list) = 
   if hd(L) > mayorvalorlistareales(tl(L))
   then hd(L)
   else mayorvalorlistareales(tl(L));      mayorvalorlistareales([2,8,5,1]);
