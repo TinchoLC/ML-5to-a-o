@@ -1,6 +1,70 @@
-                      "Practica 4";
+"Practica 4";
 
   "Ej 1:";
 
 fun listacubo(nil) = nil
   | listacubo(x::y) = x*x*x::listacubo(y);
+
+fun orLista(nil)= false
+  | orLista(x::y) = if x then true else orLista(y);
+
+orLista([false,false,false]);
+
+fun primerosLista(nil) = nil
+  | primerosLista((nil)::z) = ~1::primerosLista(z)
+  | primerosLista((x::y)::z) = x::primerosLista(z); 
+primerosLista([[1,2,3],[4,5],[],[6,7]]);
+
+fun longitudPalabras(nil) = nil
+  | longitudPalabras(x::y) = size(x)::longitudPalabras(y);
+longitudPalabras(["si","talcual","tolpe"]);
+
+fun elim(n,nil) = nil
+  | elim(n,x::y) = if n=x then elim(n,y) else x::elim(n,y);
+
+  "Ej 2:";
+
+fun repNM(n,0) = nil
+  | repNM(n,m) = n::repNM(n,m-1);
+
+fun repetir(n) = repNM(n,n); repetir(3);
+
+  "Ej 3:";
+
+fun alts ([],xs,ys) = (xs,ys)
+| alts ([x], xs, ys) = (x::xs, ys)
+| alts (x::y::t, xs, ys) = alts (t, x::xs, y::ys); 
+"∀ 'a . 'a list * 'a list * 'a list → 'a list * 'a list";
+
+alts([2,4,2,1,5], [], []);
+alts([2,1,5],[2],[4]);
+alts([5],[2,2],[4,4]);
+alts([],[2,2,5],[4,4]);
+([2,2,5],[4,4]);
+
+"La funcion permite ingresar 3 listas (del mismo tipo) y reparte las posiciones impares de la primera lista en la segunda y las posiciones pares en la tercera)";
+
+  "Ej 4:";
+
+fun letraAparece(x,"") = false
+  | letraAparece(letra,palabra) = 
+if letra = hd(explode(palabra))
+then true
+else letraAparece(letra,implode(tl(explode(palabra))));
+letraAparece(#"a","con");
+
+  "Ej 5:";
+
+datatype Dinero = Euros of real | Pesos of real | Dolares of real;
+
+fun convertir_a_euros(Euros(x))=Euros(x)
+  | convertir_a_euros(Pesos(x))=Euros(x*17.0)
+  | convertir_a_euros(Dolares(x))=Euros(x/15.0*17.0);
+
+fun convertir_a_pesos(Pesos(x))=Pesos(x)
+  | convertir_a_pesos(Euros(x))=Pesos(x/17.0)
+  | convertir_a_pesos(Dolares(x))=Pesos(x/15.0);
+
+fun convertir_a_dolares(Dolares(x))=Euros(x)
+  | convertir_a_dolares(Euros(x))=Euros(x/17.0*15.0)
+  | convertir_a_dolares(Pesos(x))=Euros(x*15.0);
