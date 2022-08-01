@@ -9,7 +9,16 @@ Nodo of 'et * 'et arbolbin * 'et arbolbin;
 Nodo(5,Vacio,Vacio);
 Nodo(5,Nodo(23,Nodo(24,Vacio,Vacio),Nodo(244,Vacio,Nodo(32,Vacio,Vacio))),Vacio);
 
-val arbol1 = Nodo("Jorge",Nodo("Ana",Nodo("Clara",Vacio,Vacio),Nodo("Micaela",Vacio,Vacio)),Nodo("Juan",Vacio,Vacio));
+val arbol1 = 
+Nodo("Jorge",
+        Nodo("Ana",
+                    Nodo("Clara",Vacio,Vacio),
+                    Nodo("Micaela",Vacio,Vacio)
+        ),
+
+        Nodo("Juan",Vacio,Vacio)
+);
+
                "Jorge";
        "Ana" ;           "Juan";
  "Clara" ; "Micaela";
@@ -37,3 +46,22 @@ productonodos(arbol2);
 fun duplicarnodos(Vacio) = Vacio 
   | duplicarnodos(Nodo(a,b,c)) = Nodo(2*a,duplicarnodos(b),duplicarnodos(c));
 duplicarnodos(arbol2);
+
+  "Ej 2:";
+
+datatype 'et arbol_list =
+Nodo of 'et * 'et arbol_list list;
+
+val arbol11= 
+Nodo("Jorge",
+             [
+             Nodo("Ana",
+                         [
+                          Nodo("Clara",[]),
+                          Nodo("Micaela",[])
+                         ]
+             ),
+
+             Nodo("Juan",[])
+             ]
+);
