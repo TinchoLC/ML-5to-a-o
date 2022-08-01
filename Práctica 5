@@ -1,1 +1,31 @@
+"Practica 5";
 
+  "Ej 1:";
+
+datatype 'et arbolbin =
+Vacio |
+Nodo of 'et * 'et arbolbin * 'et arbolbin;
+
+Nodo(5,Vacio,Vacio);
+Nodo(5,Nodo(23,Nodo(24,Vacio,Vacio),Nodo(244,Vacio,Nodo(32,Vacio,Vacio))),Vacio);
+
+val arbol1 = Nodo("Jorge",Nodo("Ana",Nodo("Clara",Vacio,Vacio),Nodo("Micaela",Vacio,Vacio)),Nodo("Juan",Vacio,Vacio));
+               "Jorge";
+       "Ana" ;           "Juan";
+ "Clara" ; "Micaela";
+
+val arbol2 = Nodo(2,Nodo(4,Nodo(5,Vacio,Vacio),Nodo(1,Vacio,Vacio)),Nodo(100,Vacio,Vacio));
+
+fun aparece(Vacio,x) = false
+  | aparece(Nodo(a,b,c),x) = a = x orelse aparece(b,x) orelse aparece(c,x);
+aparece(arbol1,"Jorge");
+
+fun cantidad(Vacio,x) = 0
+  | cantidad(Nodo(a,b,c),x) = if a = x 
+then 1 + cantidad(b,x) + cantidad(c,x) 
+else 0 + cantidad(b,x) + cantidad(c,x);
+cantidad(arbol1,"Jorge");
+
+fun sumanodos(Vacio) = 0
+  | sumanodos(Nodo(a,b,c)) = a + sumanodos(b) + sumanodos(c);
+sumanodos(arbol2);
