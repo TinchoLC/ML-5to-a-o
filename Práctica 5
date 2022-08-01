@@ -29,3 +29,11 @@ cantidad(arbol1,"Jorge");
 fun sumanodos(Vacio) = 0
   | sumanodos(Nodo(a,b,c)) = a + sumanodos(b) + sumanodos(c);
 sumanodos(arbol2);
+
+fun productonodos(Vacio) = 1
+  | productonodos(Nodo(a,b,c)) = a * productonodos(b) * productonodos(c);
+productonodos(arbol2);
+
+fun duplicarnodos(Vacio) = Vacio 
+  | duplicarnodos(Nodo(a,b,c)) = Nodo(2*a,duplicarnodos(b),duplicarnodos(c));
+duplicarnodos(arbol2);
