@@ -1,0 +1,30 @@
+"Practica 6";
+
+  "Ej 1:";
+datatype 'a newarbolbin =Vacio | Nodo of 'a newarbolbin * 'a * 'a newarbolbin;
+
+"a. Defina la función preOrden2 que realice el recorrido preorden de un 'a newarbolbin";
+"b. Defina la función inOrden2 que realice el recorrido inorden de un 'a newarbolbin";
+"c. Defina la función postOrden2 que realice el recorrido postorden de un 'a newarbolbin";
+
+
+
+val la_sabri = Nodo(Nodo(Nodo(Vacio,"Juan",Vacio),"Pedro",Nodo(Vacio,"Natalia",Vacio)),"Sabrina",Nodo(Vacio,"Roberto",Vacio));
+
+fun preOrden2(Vacio) = nil
+  | preOrden2(Nodo(a,x,b)) = [x]@preOrden2(a)@preOrden2(b);
+
+preOrden2(la_sabri);
+
+fun inOrden2(Vacio) = nil
+  | inOrden2(Nodo(a,x,b)) = inOrden2(a)@[x]@inOrden2(b);
+
+inOrden2(la_sabri);
+
+
+fun postOrden2(Vacio) = nil
+  | postOrden2(Nodo(a,x,b)) = postOrden2(a)@postOrden2(b)@[x];
+
+postOrden2(la_sabri);
+
+  "Ej 2:";
