@@ -1,0 +1,78 @@
+"Practica 7";
+
+  "Ej 1: ";
+
+datatype 'a arbol1 = Vacio | Nodo of 'a arbol1 * 'a * 'a arbol1;
+
+Vacio;
+
+Nodo(Vacio, 10 , Vacio);
+
+
+Nodo(Nodo(Vacio,5,Vacio), 10 , Vacio);
+
+Nodo( Nodo(Vacio,5,Nodo(Vacio,7,Vacio)) , 10 , Nodo(Nodo(Vacio,12,Vacio),14,Vacio) );
+
+datatype 'b arbol2 = Nodos of 'b * 'b arbol2 list;
+
+Nodos(10,[]);
+
+Nodos(5,[ 
+        Nodos(2,[ 
+                  Nodos(3, []) 
+               ]) 
+        ]);
+
+Nodos(10 , [Nodos(5,[Nodos(7,[])]) , Nodos(14,[ Nodos(12,[])])] );
+
+
+  "Ej 2: ";
+
+"a)";
+val prueba_232 = Nodo( Vacio ,"hola", Nodo ( Vacio, "Alexis", Vacio) );
+
+Nodo(Vacio,4,Vacio);
+
+size("hola");
+
+fun arbolfun1(Vacio) = Vacio
+  | arbolfun1(Nodo(izq, x , der)) = Nodo( arbolfun1(izq) , size(x) , arbolfun1(der) );
+
+arbolfun1( prueba_232 );
+
+"b)";
+val prueba_244 = Nodos(10.0 , [Nodos(5.0,[Nodos(7.0,[])]) , Nodos(14.0,[ Nodos(12.0,[])])] );
+
+fun arbolfun2( Nodos(a , nil) , x:real) = if a > x orelse a < x then 0 else 1
+  | arbolfun2( Nodos(a , c::d), x) = arbolfun2(c,x) + arbolfun2(Nodos(a,d),x);
+
+arbolfun2( prueba_244 , 14.0);
+
+"c)";
+
+fun arbolfun3( Nodos(a:real, nil) ) = a
+  | arbolfun3( Nodos(a, c::d) ) = arbolfun3(c) * arbolfun3( Nodos(a,d) );
+
+arbolfun3(prueba_244);
+
+"Ej 3:";
+
+val prueba_50 = Nodo( Nodo(Vacio,(2,2),Vacio) ,(5,2), Nodo ( Nodo(Vacio,(6,50),Vacio), (10,2) , Vacio) );
+
+"a)";
+fun inOrden2(Vacio) = nil
+  | inOrden2(Nodo(a,x,b)) = inOrden2(a)@[x]@inOrden2(b);
+
+fun inOrden3(Vacio) = nil
+  | inOrden3(Nodo(a,x,b)) = inOrden3(b)@[x]@inOrden3(a);
+
+inOrden2(prueba_50);
+inOrden3(prueba_50);
+
+"b)";
+fun inOrden2e(Vacio) = nil
+  | inOrden2e(Nodo(a, (x,y) ,b)) = if y = 2
+then inOrden2e(a)@[(x,y)]@inOrden2e(b)
+else inOrden2e(a)@inOrden2e(b);
+
+inOrden2e(prueba_50);
