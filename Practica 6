@@ -28,3 +28,63 @@ fun postOrden2(Vacio) = nil
 postOrden2(la_sabri);
 
   "Ej 2:";
+
+val dicci = Nodo(Nodo(Vacio,("arbol","tree"),Vacio),("casa","home"),Nodo(Nodo(Vacio,("coca","coke"),Vacio),("perro","dog"),Vacio));
+
+"a)";
+
+fun listar_orden_alfabetico(Vacio) = nil
+  | listar_orden_alfabetico(a) = inOrden2(a);
+
+listar_orden_alfabetico(dicci);
+
+"b) (nopude)";
+
+fun buscar_letra(Vacio,l) = nil
+  | buscar_letra(Nodo(izq,(x,y),der),l) = 
+if l = hd(explode(x))
+then buscar_letra(izq, l)@[(x,y)]@buscar_letra(der, l)
+else buscar_letra(izq, l)@buscar_letra(der, l);
+
+buscar_letra(dicci,#"c");
+
+
+
+  "Ej 3:"; 
+
+"a)";
+fun suma(Vacio)=0
+  | suma(arbol)=hd(preOrden2(arbol)) + suma1(tl(preOrden2(arbol)))
+and 
+   suma1([])=0
+  | suma1(x::s)=x + suma1(s);
+  
+"b)";
+fun producto(Vacio)=1
+  | producto(arbol)=hd(preOrden2(arbol)) * producto1(tl(preOrden2(arbol)))
+and 
+   producto1([])=1
+  | producto1(x::s)=x * producto1(s);
+
+  "Ej 4:";
+
+val doii = Nodo(Nodo(Vacio,(2.1,1.4),Nodo(Vacio,(2.5,4.1),Vacio)),(3.1,2.0),Vacio);
+
+"a)";
+fun listar_en_orden_creciente_1(Vacio) = nil
+  | listar_en_orden_creciente_1(a) = inOrden2(a);
+
+listar_en_orden_creciente_1(doii);
+
+"b)"; "Esto es muy complicado y al pedo la verdad, no va a tomar algo así";
+
+"c)";
+
+fun sum_com_may_cinco(Vacio) = nil
+  | sum_com_may_cinco(Nodo(izq,(x,y),der)) = 
+if (x + y) > 5.0 
+then sum_com_may_cinco(izq)@[(x,y)]@sum_com_may_cinco(der)
+else sum_com_may_cinco(izq)@sum_com_may_cinco(der);
+
+sum_com_may_cinco(doii);
+
