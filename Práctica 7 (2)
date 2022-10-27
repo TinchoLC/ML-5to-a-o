@@ -1,0 +1,37 @@
+"Practica 7 (2) ?? lol";
+
+"map";
+
+fun simpleMap (F,nil) = nil
+| simpleMap(F,x::xs) = F x::simpleMap(F,xs);
+
+"reduce";
+
+exception ListaVacia;
+fun reduce (F,nil) = raise ListaVacia
+| reduce(F,[a]) = a
+| reduce(F,x::xs) = F(x, reduce(F,xs));
+
+"filter";
+fun filter (P,nil) = nil
+| filter(P,x::xs) = if P(x) then x::filter(P,xs) else filter(P,xs);
+
+  "Ej 1: ";
+
+  "a:"; 
+
+fun los_reales x:real = x*x;
+
+fun ej1a list = simpleMap(los_reales,list);
+
+ej1a [2.3,1.5,3.0];
+
+ "b";
+
+2. Defina funciones que dada una lista de enteros devuelvan otra lista con los cubos de la lista pasada como
+argumento.
+3. Defina funciones que dada una lista de reales devuelva otra lista donde cada elemento negativo sea reemplazado por el cero, dejando los no negativos sin cambiar.
+4. Defina funciones que dada una lista de enteros devuelva otra lista donde todos los elementos de la nueva
+lista correspondan a los elementos de la lista pasada como argumento aumentados en una unidad.
+5. Defina funciones que dada una lista de caracteres devuelva otra lista donde cada caracter en min´uscula es
+reemplazado por su correspondiente en may´uscula, el resto no var´ıa
