@@ -1,5 +1,3 @@
-open List;
-
 "Practica 7 (2) ?? lol";
 
 "map";
@@ -135,12 +133,54 @@ ej4a [3,4,5,6,7,8] 32;
 
  "b";
 
-fun elevara a n = 
-if n>0 then a * elevara a (n-1) else 1;
+fun elevara a 0 = 1
+  | elevara a n = a * elevara a (n-1);
 
-fun ej4b
+fun ej4b nil n = nil
+  | ej4b (x::y) n = [elevara x n] @ ej4b y n;
 
-2. Una funci´on que toma una lista de enteros y un n´umero entero n y devuelve otra lista con los elementos de
-la primera lista elevados a la potencia n
-3. Una funci´on que tome una lista de funciones y un valor y aplique cada funci´on al valor, devolviendo una
-lista con los resultados.
+ej4b [1,2,3,4,5] 2;
+
+ "c";
+
+fun elevara2 a = a*a; fun eldoble a = a*2; [elevara2,eldoble];
+
+fun aplicarmucho nil a = nil
+  | aplicarmucho (f::y) a = [f a] @ aplicarmucho y a;
+
+aplicarmucho [elevara2,eldoble] 3;
+
+  "Ej 5: ";
+
+ "a";
+
+fun cubosnumerales a = a * a * a;
+
+fun suma (x,y) = x + y;
+
+fun sumadeloscubos list = reduce(suma,simpleMap(cubosnumerales,list));
+
+sumadeloscubos [1,2,3,4];
+
+ "b";
+
+fun longlist nil = 0
+  | longlist (x::y) = 1 + longlist y;
+
+fun may4 list = longlist list>4;
+
+fun el_AND (a,b) = a andalso b;
+
+fun longlists list = reduce(el_AND,simpleMap(may4,list));
+
+longlists [[1,3,3,3,3],[3,1,2,3]];
+
+ "c";
+
+fun multiplicar (a,b) = a * b;
+
+fun multiplicarall_espositivo list =  0 < reduce(multiplicar, list);
+
+fun prod_positivo list = filter(multiplicarall_espositivo,list);
+
+prod_positivo [[3,2],[0,2,3],[3,~2,3],[1]];
